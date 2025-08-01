@@ -13,20 +13,28 @@
             </div>
           </div>
           <div class="collection-wrap">
-            {% assign category_product = collections[section.settings.special_label_product] %}
-            <div class="collection-slider swiper" id="pro-{{ section.id }}">
-              <div class="swiper-wrapper">
-                {% assign product_limit = section.settings.category_special_product_limit_handle %}
-                {% for product in category_product.products limit: product_limit %}
-                <div class="swiper-slide">
-                  {%- liquid
-                    if section.settings.category_special_product_view == 'grid'
-                    render 'product-grid-item', product: product
-                    elsif section.settings.category_special_product_view == 'list'
-                    render 'product-grid-list', product: product
-                    endif
-                   -%}
-                </div>
+        {% assign category_product = collections[section.settings.special_label_product] %}
+        <div class="collection-slider swiper" id="pro-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {% assign product_limit = section.settings.category_special_product_limit_handle %}
+            {% for product in category_product.products limit: product_limit %}
+            <div class="swiper-slide">
+              {%- liquid
+                if section.settings.category_special_product_view == 'grid'
+                render 'product-grid-item', product: product
+                elsif section.settings.category_special_product_view == 'list'
+                render 'product-grid-list', product: product
+                endif
+               -%}
+            </div>
+            {% endfor %}
+          </div>
+          {% if section.settings.category_special_button_enable %}
+          <div class="collection-button" style="text-align:center; margin-top: 18px;">
+            <a href="{{ category_product.url }}" class="btn btn-style vin-btn-viewall">{{ section.settings.category_special_button_text | default: 'Ver todos los productos' }}</a>
+          </div>
+          {% endif %}
+        </div>
                 {% else %}
                 {% for i in (1..product_limit) %}
                 <div class="swiper-slide">
@@ -70,10 +78,10 @@
 <script type="text/javascript">
 addEventListener('DOMContentLoaded', (event) => {
     var swiper = new Swiper('.swiper#pro-{{ section.id }}', {
-      slidesPerView: {{ section.settings.category_special_product_limit }},
+      slidesPerView: 3, // 3 productos por fila en desktop
       grid: {
-        rows: {{ section.settings.category_special_product_col }},
-        fill: 'row' | 'column',
+        rows: 1,
+        fill: 'row',
       },
       spaceBetween: 30,
       observer: true,
@@ -99,25 +107,27 @@ addEventListener('DOMContentLoaded', (event) => {
         0: {
           slidesPerView: 1,
           grid: {
-            rows: {{ section.settings.category_special_product_col }},
-            fill: 'row' | 'column',
+            rows: 1,
+            fill: 'row',
           },
           spaceBetween: 12
         },
-        320: {
-          slidesPerView: 1,
-          grid: {
-            rows: {{ section.settings.category_special_product_col }},
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 12
-        },
-        360: {
-          {% if section.settings.category_special_product_view == 'list' %}
-          slidesPerView: 1,
-          {% elsif section.settings.category_special_product_view == 'grid' %}
+        600: {
           slidesPerView: 2,
-          {% endif %}
+          grid: {
+            rows: 1,
+            fill: 'row',
+          },
+          spaceBetween: 16
+        },
+        1024: {
+          slidesPerView: 3,
+          grid: {
+            rows: 1,
+            fill: 'row',
+          },
+          spaceBetween: 30
+        },
           grid: {
             rows: {{ section.settings.category_special_product_col }},
             fill: 'row' | 'column',
