@@ -69,6 +69,26 @@ Tooltip css
         border-right: none;
     }   
 }
+/* Grid básico para productos en 3 o 2 columnas */
+.collection-slider .swiper-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.collection-slider .swiper-slide {
+  width: calc(33.333% - 16px);
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .collection-slider .swiper-slide {
+    width: calc(50% - 12px);
+  }
+}
+@media (max-width: 600px) {
+  .collection-slider .swiper-slide {
+    width: 100%;
+  }
+}
 /* search css */
 .header-area .header-top .header-top-bar .search-map .search-wrap,
 .header-area .header-top .header-top-bar .search-map .custom-text {
