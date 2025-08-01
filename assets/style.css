@@ -191,6 +191,34 @@ Tooltip css
 }
 /* Fin Vinicius Modern Product Card Styles */
 
+/* --- Forzar grid Swiper para productos --- */
+.collection-slider .swiper-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+@media (max-width: 1023px) {
+  .collection-slider .swiper-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 599px) {
+  .collection-slider .swiper-wrapper {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+.collection-slider .swiper-slide {
+  width: 100% !important;
+  height: auto !important;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+/* --- Fin grid Swiper --- */
+
+
 .tooltip{
     text-transform: uppercase;
     font-size: 13px;
