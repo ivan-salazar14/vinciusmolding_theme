@@ -4,21 +4,10 @@
     assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)"
     endif
 -%}
-<div class="vin-card-product{% unless product.available %} vin-card-outstock{% endunless %}">
-  <div class="vin-card-img-wrap">
-    <a class="vin-card-img-link" href="{{ product.url | within: collection }}">
-      <img class="vin-card-img-main" src="{{ product.featured_image.src | image_url: width: 625, height: 685, crop: 'center' }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-      {% if product.images[1] %}
-        <img class="vin-card-img-hover" src="{{ product.images[1] | image_url: width: 625, height: 685, crop: 'center' }}" alt="{{ product.images[1].alt }}" loading="lazy">
-      {% endif %}
-      {% if product.available == false %}
-        <span class="vin-card-badge vin-badge-outstock">Sin stock</span>
-      {% elsif product.compare_at_price_max > product.price %}
-        <span class="vin-card-badge vin-badge-sale">Oferta</span>
-      {% endif %}
-      {%- render 'product-label' -%}
-    </a>
-  </div>
+<div class="product-item">
+  <a href="{{ product.url | within: collection }}">
+    <img src="{{ product.featured_image.src | image_url: width: 625, height: 685, crop: 'center' }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+  </a>
   <div class="vin-card-content">
     <div class="vin-card-title">
       <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title }}</a>
