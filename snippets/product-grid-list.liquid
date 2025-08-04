@@ -10,18 +10,14 @@
       <a class="pro-img" href="{{ product.url | within: collection }}">
         {% if product.featured_image %}
         <img class="img-fluid img1"
-             src="{{ product.featured_image | image_url: '500x500', crop: 'center' }}"
-             width="{{ product.featured_image.width }}"
-             height="{{ product.featured_image.height }}"
-             alt="{{ product.featured_image.alt | escape }}"
+             src="{{ product.featured_image }}"
+             alt="{{ product.title | escape }}"
              loading="lazy">
         {% endif %}
         {% if product.images.size > 1 and product.images[1] %}
         <img class="img-fluid img2"
-             src="{{ product.images[1] | image_url: '500x500', crop: 'center' }}"
-             width="{{ product.images[1].width }}"
-             height="{{ product.images[1].height }}"
-             alt="{{ product.images[1].alt | escape }}"
+             src="{{ product.images[1] }}"
+             alt="{{ product.title | escape }}"
              loading="lazy">
         {% endif %}
       </a>
