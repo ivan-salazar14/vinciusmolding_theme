@@ -7,8 +7,12 @@
     {# Debug: featured_image = {{ product.featured_image | json }} #}
     {# Debug: images = {{ product.images | json }} #}
     <div style="font-size:10px; color:red;">
-      RAW: {{ product.featured_image }}
-    </div> 
+  RAW: {{ product.featured_image }}<br>
+  RAW JSON: {{ product.featured_image | json }}<br>
+  RAW RAW: {% raw %}{{ product.featured_image }}{% endraw %}<br>
+  RAW APPEND: {{ product.featured_image | append: '' }}
+</div>
+
   <div class="product-image">
       <a class="pro-img" href="{{ product.url | within: collection }}">
         {% if product.featured_image %}
