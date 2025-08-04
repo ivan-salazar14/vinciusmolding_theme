@@ -5,8 +5,11 @@
 <div class="product-grid-list">
   <div class="single-product-wrap">
     {# Debug: featured_image = {{ product.featured_image | json }} #}
-{# Debug: images = {{ product.images | json }} #}
-<div class="product-image">
+    {# Debug: images = {{ product.images | json }} #}
+    <div style="font-size:10px; color:red;">
+      RAW: {{ product.featured_image }}
+    </div> 
+  <div class="product-image">
       <a class="pro-img" href="{{ product.url | within: collection }}">
         {% if product.featured_image %}
         <img class="img-fluid img1"
