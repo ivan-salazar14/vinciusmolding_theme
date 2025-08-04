@@ -16,16 +16,18 @@
   <div class="product-image">
       <a class="pro-img" href="{{ product.url | within: collection }}">
         {% if product.featured_image %}
-        <img class="img-fluid img1"
-             src="{{ product.featured_image | strip }}"
-             alt="{{ product.title | escape }}"
-             loading="lazy">
+        {% assign featured_image_url = product.featured_image | json | replace: '"', '' %}
+<img class="img-fluid img1"
+     src="{{ featured_image_url }}"
+     alt="{{ product.title | escape }}"
+     loading="lazy">
         {% endif %}
         {% if product.images.size > 1 and product.images[1] %}
-        <img class="img-fluid img2"
-             src="{{ product.images[1] | strip }}"
-             alt="{{ product.title | escape }}"
-             loading="lazy">
+        {% assign img2_url = product.images[1] | json | replace: '"', '' %}
+<img class="img-fluid img2"
+     src="{{ img2_url }}"
+     alt="{{ product.title | escape }}"
+     loading="lazy">
         {% endif %}
       </a>
     </div>
