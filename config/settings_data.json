@@ -1389,7 +1389,7 @@
           "border_enable": false,
           "border_color_opacity": 0.1,
           "section_title": "Productos Populares",
-          "category_special_product_view": "grid",
+          "category_special_product_view": "list",
           "category_special_product_limit_handle": "12",
           "category_special_product_col": "2",
           "category_special_product_limit": "4",
