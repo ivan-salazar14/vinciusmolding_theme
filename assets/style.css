@@ -1082,7 +1082,7 @@ product css
     z-index: 2;
 }
 .single-product-wrap .product-image .img1 {
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
     z-index: 1;
 }
 .single-product-wrap:hover .product-image .img2 {
@@ -1090,6 +1090,52 @@ product css
 }
 .single-product-wrap:hover .product-image .img1 {
     opacity: 0;
+}
+.single-product-wrap .product-action {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+}
+.single-product-wrap:hover .product-action {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+.single-product-wrap .product-action a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #333;
+    color: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.single-product-wrap .product-action a:hover {
+    background: #000;
+    transform: translateY(-3px);
+}
+.single-product-wrap .product-action a i {
+    font-size: 16px;
+}
+.single-product-wrap .product-image {
+    overflow: hidden;
+}
+.single-product-wrap .product-image a.pro-img {
+    display: block;
+    position: relative;
 }
 .single-product-wrap:hover .product-image a.pro-img::after {
     opacity: 0.5;
