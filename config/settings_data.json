@@ -1379,9 +1379,9 @@
         "settings": {
           "category_special_padding_top": 100,
           "category_special_padding_bottom": 20,
-          "category_special_padding_top_ip": 80,
+          "category_special_padding_top_ip": 85,
           "category_special_padding_bottom_ip": 20,
-          "category_special_padding_top_xs": 60,
+          "category_special_padding_top_xs": 84,
           "category_special_padding_bottom_xs": 20,
           "section_bgcolor": "rgba(0,0,0,0)",
           "section_bgcolor_enable": false,
