@@ -1070,6 +1070,27 @@ product css
     opacity: 0;
     visibility: hidden;
 }
+.single-product-wrap .product-image .img2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+}
+.single-product-wrap .product-image .img1 {
+    transition: opacity 0.3s;
+    z-index: 1;
+}
+.single-product-wrap:hover .product-image .img2 {
+    opacity: 1;
+}
+.single-product-wrap:hover .product-image .img1 {
+    opacity: 0;
+}
 .single-product-wrap:hover .product-image a.pro-img::after {
     opacity: 0.5;
     visibility: visible;
