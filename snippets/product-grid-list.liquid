@@ -2,23 +2,19 @@
 {%- if product.available -%}
 {%- assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" -%}
 {%- endif -%}
-
+<div class="product-grid-list">
+  <div class="single-product-wrap">
   <div class="product-image">
       <a class="pro-img" href="{{ product.url | within: collection }}">
         {% if product.featured_image %}
-        {% assign featured_image_url = product.featured_image | json | replace: '"', '' %}
-<img class="img-fluid img1"
-     src="{{ featured_image_url }}"
-     alt="{{ product.title | escape }}"
-     loading="lazy">
-        {% endif %}
-        {% if product.images.size > 1 and product.images[1] %}
-        {% assign img2_url = product.images[1] | json | replace: '"', '' %}
-<img class="img-fluid img2"
-     src="{{ img2_url }}"
-     alt="{{ product.title | escape }}"
-     loading="lazy">
-        {% endif %}
+  {% assign featured_image_url = product.featured_image | json | replace: '"', '' %}
+  <img class="img-fluid img1"
+       src="{{ featured_image_url }}"
+       alt="{{ product.title | escape }}"
+       width="500"
+       height="500"
+       loading="lazy">
+{% endif %}
       </a>
     </div>
     <div class="product-content">
