@@ -1752,7 +1752,7 @@
           "border_enable": false,
           "border_color_opacity": 0.3,
           "section_title": "Popular product",
-          "category_special_product_view": "list",
+          "category_special_product_view": "grid",
           "category_special_product_limit_handle": "12",
           "category_special_product_col": "3",
           "category_special_product_limit": "4",
