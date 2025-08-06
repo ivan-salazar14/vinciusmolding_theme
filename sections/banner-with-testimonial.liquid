@@ -32,41 +32,31 @@
         </li>
         <li class="banner-testi-li testimonial">
           <div class="testimonial-block">
-            <div class="swiper" id="testimonial-{{ block.id }}">
-              <div class="swiper-wrapper">
-                {% for block in section.blocks %}
-                <div class="swiper-slide">
-                  <div class="testi-main">
-                    <div class="testi-image">
-                      {%- if block.settings.testi_image -%}
-                      {{ block.settings.testi_image | image_url: width: 500 | image_tag:
-                        loading: 'lazy',
-                        width: block.settings.testi_image.width,
-                        height: block.settings.testi_image.height,
-                        class: "img-fluid",
-                        alt: block.settings.testi_image.alt | escape }}
-                      {%- else -%}
-                      {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
-                      {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
-                      {%- endif -%} 
-                    </div>
-                    <div class="testi-content">
-                      {% if block.settings.testi_desc != '' %}
-                      <p class="desc">{{ block.settings.testi_desc }}</p>
-                      {% endif %}
-                      <span class="icon"><i class="ri-double-quotes-l"></i></span>
-                      <div class="testi-author">
-                        {% if block.settings.testi_author_name != '' %}
-                        <span class="author-name">{{ block.settings.testi_author_name }} ~ </span>
-                        {% endif %}
-                        {% if block.settings.testi_author_label != '' %}
-                        <span class="author-label">{{ block.settings.testi_author_label }}</span>
-                        {% endif %}
-                      </div>
-                    </div>
-                  </div>
+            <div class="testi-main">
+              {% assign first_block = section.blocks | first %}
+              {% if first_block.settings.testi_image %}
+              <div class="testi-image">
+                {{ first_block.settings.testi_image | image_url: width: 500 | image_tag:
+                  loading: 'lazy',
+                  width: first_block.settings.testi_image.width,
+                  height: first_block.settings.testi_image.height,
+                  class: "img-fluid",
+                  alt: first_block.settings.testi_image.alt | escape }}
+              </div>
+              {% endif %}
+              <div class="testi-content">
+                {% if first_block.settings.testi_desc != '' %}
+                <p class="desc">{{ first_block.settings.testi_desc }}</p>
+                {% endif %}
+                <span class="icon"><i class="ri-double-quotes-l"></i></span>
+                <div class="testi-author">
+                  {% if first_block.settings.testi_author_name != '' %}
+                  <span class="author-name">{{ first_block.settings.testi_author_name }} ~ </span>
+                  {% endif %}
+                  {% if first_block.settings.testi_author_label != '' %}
+                  <span class="author-label">{{ first_block.settings.testi_author_label }}</span>
+                  {% endif %}
                 </div>
-                {%- endfor -%}
               </div>
             </div>
           </div>
@@ -102,103 +92,7 @@
     </div>
   </div>
 </section>
-<script type="text/javascript">
-  addEventListener('DOMContentLoaded', (event) => {
-    var swiper = new Swiper('.swiper#testimonial-{{ block.id }}', {
-      slidesPerView: 1,
-      grid: {
-        rows: 1,
-        fill: 'row' | 'column',
-      },
-      spaceBetween: 0,
-      observer: true,
-      observeParents: true,
-      watchSlidesProgress: true,
-      {%- if settings.enable_rtl -%}
-      rtl: true,
-      {%- endif -%}
-      navigation: {
-        nextEl: '.swiper-next-{{ section.id }}',
-        prevEl: '.swiper-prev-{{ section.id }}',
-      },
-      pagination: {
-        el: ".swiper-pagination-{{ section.id }}",
-        clickable: true
-      },
-      {% comment %} autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true
-      }, {% endcomment %}
-      breakpoints: {
-        0: {
-          slidesPerView: 1,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 12
-        },
-        320: {
-          slidesPerView: 1,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 12
-        },
-        360: {
-          slidesPerView: 1,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 12
-        },
-        540: {
-          slidesPerView: 1,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 12
-        },
-        640: {
-          slidesPerView: 2,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 12
-        },
-        768: {
-          slidesPerView: 2,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 30
-        },
-        1024: {
-          slidesPerView: 2,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 30
-        },
-        1199: {
-          slidesPerView: 1,
-          grid: {
-            rows: 1,
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 30
-        }
-      }
-    });
-  });
-</script>
+
 {% schema %}
 {
   "name": "Banner With Testimonial",
