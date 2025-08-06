@@ -32,32 +32,44 @@
         </li>
         <li class="banner-testi-li testimonial">
           <div class="testimonial-block">
-            <div class="testi-main">
-              {% assign first_block = section.blocks | first %}
-              {% if first_block.settings.testi_image %}
-              <div class="testi-image">
-                {{ first_block.settings.testi_image | image_url: width: 500 | image_tag:
-                  loading: 'lazy',
-                  width: first_block.settings.testi_image.width,
-                  height: first_block.settings.testi_image.height,
-                  class: "img-fluid",
-                  alt: first_block.settings.testi_image.alt | escape }}
-              </div>
-              {% endif %}
-              <div class="testi-content">
-                {% if first_block.settings.testi_desc != '' %}
-                <p class="desc">{{ first_block.settings.testi_desc }}</p>
-                {% endif %}
-                <span class="icon"><i class="ri-double-quotes-l"></i></span>
-                <div class="testi-author">
-                  {% if first_block.settings.testi_author_name != '' %}
-                  <span class="author-name">{{ first_block.settings.testi_author_name }} ~ </span>
-                  {% endif %}
-                  {% if first_block.settings.testi_author_label != '' %}
-                  <span class="author-label">{{ first_block.settings.testi_author_label }}</span>
-                  {% endif %}
+            <div class="swiper" id="testimonial-{{ section.id }}">
+              <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                <div class="swiper-slide">
+                  <div class="testi-main">
+                    {% if block.settings.testi_image %}
+                    <div class="testi-image">
+                      {{ block.settings.testi_image | image_url: width: 500 | image_tag:
+                        loading: 'lazy',
+                        width: block.settings.testi_image.width,
+                        height: block.settings.testi_image.height,
+                        class: "img-fluid",
+                        alt: block.settings.testi_image.alt | escape }}
+                    </div>
+                    {% endif %}
+                    <div class="testi-content">
+                      {% if block.settings.testi_desc != '' %}
+                      <p class="desc">{{ block.settings.testi_desc }}</p>
+                      {% endif %}
+                      <span class="icon"><i class="ri-double-quotes-l"></i></span>
+                      <div class="testi-author">
+                        {% if block.settings.testi_author_name != '' %}
+                        <span class="author-name">{{ block.settings.testi_author_name }} ~ </span>
+                        {% endif %}
+                        {% if block.settings.testi_author_label != '' %}
+                        <span class="author-label">{{ block.settings.testi_author_label }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                {% endfor %}
               </div>
+              <!-- Add pagination -->
+              <div class="swiper-pagination swiper-pagination-{{ section.id }}"></div>
+              <!-- Add navigation buttons -->
+              <div class="swiper-button-prev swiper-prev-{{ section.id }}"></div>
+              <div class="swiper-button-next swiper-next-{{ section.id }}"></div>
             </div>
           </div>
         </li>
@@ -92,6 +104,36 @@
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper('.swiper#testimonial-{{ section.id }}', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination-{{ section.id }}",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-next-{{ section.id }}",
+        prevEl: ".swiper-prev-{{ section.id }}",
+      },
+      {%- if settings.enable_rtl -%}
+      rtl: true,
+      {%- endif -%}
+      breakpoints: {
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 1 },
+        1024: { slidesPerView: 1 }
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {
