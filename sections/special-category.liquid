@@ -13,61 +13,57 @@
             </div>
           </div>
           <div class="collection-wrap">
-        {% assign category_product = collections[section.settings.special_label_product] %}
-        <div class="collection-slider swiper" id="pro-{{ section.id }}">
-          <div class="swiper-wrapper">
-            {% assign product_limit = section.settings.category_special_product_limit_handle %}
-            {% for product in category_product.products limit: product_limit %}
-            <div class="swiper-slide">
-              {%- liquid
-                if section.settings.category_special_product_view == 'grid'
-                render 'product-grid-item', product: product
-                elsif section.settings.category_special_product_view == 'list'
-                render 'product-grid-list', product: product
-                endif
-               -%}
-            </div>
-            {% endfor %}
-          </div>
-          {% if section.settings.category_special_button_enable %}
-          <div class="collection-button" style="text-align:center; margin-top: 18px;">
-            <a href="{{ category_product.url }}" class="btn btn-style vin-btn-viewall">{{ section.settings.category_special_button_text | default: 'Ver todos los productos' }}</a>
-          </div>
-          {% endif %}
-        </div>
-                {% else %}
-                {% for i in (1..product_limit) %}
-                <div class="swiper-slide">
-                  <div class="single-product-wrap">
-                    <div class="product-image">
-                      {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
-                      {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+            {% assign category_product = collections[section.settings.special_label_product] %}
+            <div class="collection-slider swiper" id="pro-{{ section.id }}">
+              <div class="swiper-wrapper">
+                {% assign product_limit = section.settings.category_special_product_limit_handle %}
+                {% if category_product and category_product.products_count > 0 %}
+                  {% for product in category_product.products limit: product_limit %}
+                    <div class="swiper-slide">
+                      {%- liquid
+                        if section.settings.category_special_product_view == 'grid'
+                          render 'product-grid-item', product: product
+                        elsif section.settings.category_special_product_view == 'list'
+                          render 'product-grid-list', product: product
+                        endif
+                      -%}
                     </div>
-                    <div class="product-content">
-                        <div class="product-title">
-                          <h6><a href="javascript:void(0)">{{ 'homepage.sections.product_title' | t }}</a></h6>
+                  {% endfor %}
+                {% else %}
+                  {% for i in (1..product_limit) %}
+                    <div class="swiper-slide">
+                      <div class="single-product-wrap">
+                        <div class="product-image">
+                          {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+                          {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
                         </div>
-                        <div class="price-box">
-                        <span class="new-price">{{ 'homepage.sections.product_price' | t }}</span>
+                        <div class="product-content">
+                          <div class="product-title">
+                            <h6><a href="javascript:void(0)">{{ 'homepage.sections.product_title' | t }}</a></h6>
+                          </div>
+                          <div class="price-box">
+                            <span class="new-price">{{ 'homepage.sections.product_price' | t }}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                {% endfor %}
-                {% endfor %}
+                  {% endfor %}
+                {% endif %}
               </div>
               {% if section.settings.category_special_button_enable %}
-              <div class="collection-button">
-                <a href="{{ category_product.url }}" class="btn {% if section.settings.category_special_button_style == 'btn-style1' %}btn-style{% elsif section.settings.category_special_button_style == 'btn-style2' %}btn-style2{% else %}btn-style3{% endif %}">{{ section.settings.category_special_button_text }}</a>
+              <div class="collection-button" style="text-align:center; margin-top: 18px;">
+                {% if category_product %}
+                <a href="{{ category_product.url }}" class="btn btn-style vin-btn-viewall">{{ section.settings.category_special_button_text | default: 'Ver todos los productos' }}</a>
+                {% endif %}
               </div>
               {% endif %}
-            </div>
-            <div class="swiper-buttons">
-              <button class="swiper-prev swiper-prev-{{ section.id }}"><i class="fa fa-angle-left"></i></button>
-              <button class="swiper-next swiper-next-{{ section.id }}"><i class="fa fa-angle-right"></i></button>
-            </div>
-            <div class="swiper-dots">
-              <div class="swiper-pagination swiper-pagination-{{ section.id }}"></div>
+              <div class="swiper-buttons">
+                <button class="swiper-prev swiper-prev-{{ section.id }}"><i class="fa fa-angle-left"></i></button>
+                <button class="swiper-next swiper-next-{{ section.id }}"><i class="fa fa-angle-right"></i></button>
+              </div>
+              <div class="swiper-dots">
+                <div class="swiper-pagination swiper-pagination-{{ section.id }}"></div>
+              </div>
             </div>
           </div>
         </div>
