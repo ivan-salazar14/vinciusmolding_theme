@@ -1382,7 +1382,7 @@
           "category_special_padding_top_ip": 100,
           "category_special_padding_bottom_ip": 20,
           "category_special_padding_top_xs": 39,
-          "category_special_padding_bottom_xs": 0,
+          "category_special_padding_bottom_xs": 23,
           "section_bgcolor": "rgba(0,0,0,0)",
           "section_bgcolor_enable": false,
           "border": 1,
