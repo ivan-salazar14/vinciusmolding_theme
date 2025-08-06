@@ -1,4 +1,4 @@
-<section class="special-category collection-category-{{ section.id }}">
+<section class="special-category collection-category-{{ section.id }}" data-product-count="{{ section.settings.category_special_product_limit }}">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -401,20 +401,13 @@ addEventListener('DOMContentLoaded', (event) => {
       "default": "3"
     },
     {
-      "type": "select",
-      "id": "category_special_product_limit",
-      "label": "slides Per View",
-      "options": [
-        {
-          "label": "3 Products",
-          "value": "3"
-        },
-        {
-          "label": "4 Products",
-          "value": "4"
-        }
-      ],
-      "default": "4"
+      "type": "range",
+      "id": "category_special_product_limit_handle",
+      "label": "Number of Products to Show",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 8
     },
     {
       "type": "collection",
@@ -469,6 +462,45 @@ addEventListener('DOMContentLoaded', (event) => {
 <style>
   .special-category .swiper-slide {
     height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .special-category .swiper-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+  
+  .special-category .collection-slider {
+    overflow: visible;
+  }
+  
+  .special-category .swiper-slide {
+    width: calc(100% / 4 - 20px) !important;
+    margin: 10px;
+    flex: 0 0 calc(25% - 20px);
+  }
+  
+  @media (max-width: 1199px) {
+    .special-category .swiper-slide {
+      width: calc(100% / 3 - 20px) !important;
+      flex: 0 0 calc(33.333% - 20px);
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .special-category .swiper-slide {
+      width: calc(50% - 20px) !important;
+      flex: 0 0 calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .special-category .swiper-slide {
+      width: 100% !important;
+      flex: 0 0 100%;
+    }
   }
   
   .special-category .vin-card-product {
