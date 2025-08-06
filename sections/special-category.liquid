@@ -17,7 +17,7 @@
             <div class="collection-slider swiper" id="pro-{{ section.id }}">
               <div class="swiper-wrapper">
                 {% assign product_limit = section.settings.category_special_product_limit_handle %}
-                {% if category_product and category_product.products_count > 0 %}
+                {% if category_product and category_product.products_count != blank and category_product.products_count > 0 %}
                   {% for product in category_product.products limit: product_limit %}
                     <div class="swiper-slide">
                       {%- liquid
