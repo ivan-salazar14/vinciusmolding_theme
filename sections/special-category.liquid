@@ -74,50 +74,90 @@
 <script type="text/javascript">
 addEventListener('DOMContentLoaded', (event) => {
     var swiper = new Swiper('.swiper#pro-{{ section.id }}', {
-      slidesPerView: 3, // 3 productos por fila en desktop
-      grid: {
-        rows: 1,
-        fill: 'row',
-      },
-      spaceBetween: 30,
-      observer: true,
-      observeParents: true,
-      watchSlidesProgress: true,
-      {%- if settings.enable_rtl -%}
-      rtl: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        0: {
-          slidesPerView: 1.2,
-          spaceBetween: 12,
-        },
-        400: {
-          slidesPerView: 1.5,
-          spaceBetween: 15,
-        },
-        500: {
-          slidesPerView: 1.8,
-          spaceBetween: 16,
-          grid: {
+        slidesPerView: 1.2,
+        grid: {
             rows: 1,
             fill: 'row',
-          },
-          spaceBetween: 30
         },
-          grid: {
-            rows: {{ section.settings.category_special_product_col }},
-            fill: 'row' | 'column',
-          },
-          spaceBetween: 12
+        spaceBetween: 15,
+        observer: true,
+        observeParents: true,
+        watchSlidesProgress: true,
+        {%- if settings.enable_rtl -%}
+        rtl: true,
+        {%- endif %}
+        navigation: {
+            nextEl: '.swiper-next-{{ section.id }}',
+            prevEl: '.swiper-prev-{{ section.id }}',
         },
-        540: {
-          slidesPerView: 2,
-          grid: {
-            rows: {{ section.settings.category_special_product_col }},
-            fill: 'row' | 'column',
+        pagination: {
+            el: '.swiper-pagination-{{ section.id }}',
+            clickable: true,
+        },
+        breakpoints: {
+            // Mobile (default)
+            0: {
+                slidesPerView: 1.2,
+                spaceBetween: 15,
+                grid: {
+                    rows: 1,
+                    fill: 'row',
+                }
+            },
+            // Small mobile
+            400: {
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+                grid: {
+                    rows: 1,
+                    fill: 'row',
+                }
+            },
+            // Medium mobile
+            500: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+                grid: {
+                    rows: 1,
+                    fill: 'row',
+                }
+            },
+            // Small tablets
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                grid: {
+                    rows: 1,
+                    fill: 'row',
+                }
+            },
+            // Tablets
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                grid: {
+                    rows: 1,
+                    fill: 'row',
+                }
+            },
+            // Small desktops
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+                grid: {
+                    rows: 1,
+                    fill: 'row',
+                }
+            },
+            // Large desktops
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                grid: {
+                    rows: 1,
+                    fill: 'row',
+                }
+            }
           },
           spaceBetween: 12
         },
