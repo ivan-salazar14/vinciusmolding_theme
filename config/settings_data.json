@@ -1373,6 +1373,7 @@
       },
       "8029ba1d-03af-4420-8e09-94259a0e968c": {
         "type": "special-category",
+        "disabled": true,
         "custom_css": [
           ".single-product-wrap {overflow: hidden; background-color: #f5f5f5; border-radius: var(--sti-border-radius);}"
         ],
@@ -1390,7 +1391,7 @@
           "border_enable": false,
           "border_color_opacity": 0.1,
           "section_title": "Favoritos de los Clientes",
-          "category_special_product_view": "list",
+          "category_special_product_view": "grid",
           "category_special_product_limit_handle": "6",
           "category_special_product_col": "2",
           "category_special_product_limit": "3",
@@ -1707,11 +1708,38 @@
           "category_special_button_style": "btn-style2",
           "category_special_button_enable": false
         }
+      },
+      "deal_product_hBqy9D": {
+        "type": "deal-product",
+        "name": "Deal Product",
+        "settings": {
+          "category_special_padding_top": 100,
+          "category_special_padding_bottom": 100,
+          "category_special_padding_top_ip": 80,
+          "category_special_padding_bottom_ip": 80,
+          "category_special_padding_top_xs": 60,
+          "category_special_padding_bottom_xs": 60,
+          "section_bgcolor": "#FFFFFF",
+          "section_bgcolor_enable": true,
+          "border": 1,
+          "border_color": "#C19D60",
+          "border_enable": false,
+          "border_color_opacity": 0.3,
+          "section_title": "Favoritos de los Clientes",
+          "category_special_product_limit_handle": "9",
+          "category_special_product_col": "3",
+          "category_special_product_limit": "4",
+          "special_label_product": "todos",
+          "category_special_button_text": "ver Mas",
+          "category_special_button_style": "btn-style2",
+          "category_special_button_enable": true
+        }
       }
     },
     "content_for_index": [
       "1605848244aeafd51a",
       "1263a92d-5313-423d-90f3-913624a0951c",
+      "deal_product_hBqy9D",
       "8029ba1d-03af-4420-8e09-94259a0e968c",
       "5f46a36c-ecf3-4c59-ac8b-49552ea8deb7",
       "6e1eafa4-6906-4ff4-bffd-2cd3add00710",
@@ -1724,6 +1752,11 @@
       "4935202709820522637": {
         "type": "shopify://apps/trustshop-product-reviews/blocks/review-embed/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
         "disabled": false,
+        "settings": {}
+      },
+      "17649911790975803669": {
+        "type": "shopify://apps/facebook-ads-google-ads-ai/blocks/adscale/4c8556b1-591d-4c26-940d-3f6695844f9e",
+        "disabled": true,
         "settings": {}
       }
     }
