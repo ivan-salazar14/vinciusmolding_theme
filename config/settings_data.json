@@ -1734,33 +1734,6 @@
           "category_special_button_style": "btn-style2",
           "category_special_button_enable": true
         }
-      },
-      "special_category_GWj4Uc": {
-        "type": "special-category",
-        "name": "Special Category",
-        "settings": {
-          "category_special_padding_top": 100,
-          "category_special_padding_bottom": 100,
-          "category_special_padding_top_ip": 80,
-          "category_special_padding_bottom_ip": 80,
-          "category_special_padding_top_xs": 60,
-          "category_special_padding_bottom_xs": 60,
-          "section_bgcolor": "#FFFFFF",
-          "section_bgcolor_enable": true,
-          "border": 1,
-          "border_color": "#C19D60",
-          "border_enable": false,
-          "border_color_opacity": 0.3,
-          "section_title": "Popular product",
-          "category_special_product_view": "grid",
-          "category_special_product_limit_handle": "12",
-          "category_special_product_col": "3",
-          "category_special_product_limit": "4",
-          "special_label_product": "todos",
-          "category_special_button_text": "See more",
-          "category_special_button_style": "btn-style2",
-          "category_special_button_enable": true
-        }
       }
     },
     "content_for_index": [
@@ -1773,8 +1746,7 @@
       "8d9810a8-ec82-4c03-ad67-c8e0e6b28888",
       "119c8478-6cbf-427f-b116-c6428b683c8b",
       "d5677f3d-90a7-4e0e-827a-d02b2188de09",
-      "1661863923c985dc6b",
-      "special_category_GWj4Uc"
+      "1661863923c985dc6b"
     ],
     "blocks": {
       "4935202709820522637": {
